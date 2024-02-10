@@ -15,8 +15,8 @@ class AppUserResponse extends JsonResource
       private $profilePictureLink;
       private $verificationState;
 
-    public function __construct($data)
-    {
+    public function __construct($data){
+        
         $this->firstName = $data['firstName'] ?? null;
         $this->lastName = $data['lastName'] ?? null;
         $this->phoneNumber = $data['phoneNumber'] ?? null;
@@ -38,9 +38,6 @@ class AppUserResponse extends JsonResource
             'profilePictureLink' => $appUser->profilePictureLink,
             'verificationState' => $appUser->verificationState,
         ]);
-
-
-
 
     }
 
