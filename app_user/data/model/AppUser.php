@@ -9,6 +9,10 @@ class AppUser extends Model
 {
     use HasFactory;
 
+    protected $table = 'products';
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'firstName',
         'lastName',
@@ -33,5 +37,5 @@ class AppUser extends Model
         'verificationState' => 'string',
     ];
 
-    // Define relationships, accessors, mutators, etc., if needed
+
 }

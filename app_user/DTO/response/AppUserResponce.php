@@ -2,15 +2,18 @@
 
 namespace App\Http\Responses;
 
-class AppUserResponse
+use App\Models\AppUser;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class AppUserResponse extends JsonResource
 {
-    public $firstName;
-    public $lastName;
-    public $phoneNumber;
-    public $role;
-    public $registration_date;
-    public $profilePictureLink;
-    public $verificationState;
+    private $firstName;
+    private $lastName;
+      private $phoneNumber;
+    private $role;
+     private $registration_date;
+      private $profilePictureLink;
+      private $verificationState;
 
     public function __construct($data)
     {
@@ -22,4 +25,95 @@ class AppUserResponse
         $this->profilePictureLink = $data['profilePictureLink'] ?? null;
         $this->verificationState = $data['verificationState'] ?? null;
     }
+
+
+    public static function mapAppUserToResponse(AppUser $appUser): AppUserResponse
+    {
+        return new AppUserResponse([
+            'firstName' => $appUser->firstName,
+            'lastName' => $appUser->lastName,
+            'phoneNumber' => $appUser->phoneNumber,
+            'role' => $appUser->role,
+            'registration_date' => $appUser->registration_date,
+            'profilePictureLink' => $appUser->profilePictureLink,
+            'verificationState' => $appUser->verificationState,
+        ]);
+
+
+
+
+    }
+
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
+    public function setRegistrationDate($registration_date)
+    {
+        $this->registration_date = $registration_date;
+    }
+
+    public function setProfilePictureLink($profilePictureLink)
+    {
+        $this->profilePictureLink = $profilePictureLink;
+    }
+
+    public function setVerificationState($verificationState)
+    {
+        $this->verificationState = $verificationState;
+    }
+
+    // Getters
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function getRegistrationDate()
+    {
+        return $this->registration_date;
+    }
+
+    public function getProfilePictureLink()
+    {
+        return $this->profilePictureLink;
+    }
+
+    public function getVerificationState()
+    {
+        return $this->verificationState;
+    }
+
+
 }
