@@ -1,73 +1,67 @@
 <?php
 
+namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
-class AddressZ extends Model
-{
-    private string $streetAddress;
-    private string $houseNumber;
-    private string $localGovernmentArea;
-    private string $currentState;
-    private AddressType $addressType;
-    private AppUser $appUser;
+class AddressZ extends Model{
+    protected $fillable = [
+        'streetAddress',
+        'houseNumber',
+        'localGovernmentArea',
+        'residents_state',
+        'address_type',
+    ];
 
-    // Setter for $appUser
-    public function setAppUser(AppUser $appUser): void
+    // Getters
+    public function getStreetAddressAttribute($value)
     {
-        $this->appUser = $appUser;
+        return $value;
     }
 
-    // Getter for $appUser
-    public function getAppUser(): AppUser
+    public function getHouseNumberAttribute($value)
     {
-        return $this->appUser;
+        return $value;
     }
 
-    // Setter for $currentState
-    public function setCurrentState(string $currentState): void
+    public function getLocalGovernmentAreaAttribute($value)
     {
-        $this->currentState = $currentState;
+        return $value;
     }
 
-    // Getter for $currentState
-    public function getCurrentState(): string
+    public function getResidentsStateAttribute($value)
     {
-        return $this->currentState;
+        return $value;
     }
 
-    // Setter for $streetAddress
-    public function setStreetAddress(string $streetAddress): void
+    public function getAddressTypeAttribute($value)
     {
-        $this->streetAddress = $streetAddress;
+        return $value;
     }
 
-    // Getter for $streetAddress
-    public function getStreetAddress(): string
+    // Setters
+    public function setStreetAddressAttribute($value)
     {
-        return $this->streetAddress;
+        $this->attributes['streetAddress'] = $value;
     }
 
-    // Setter for $houseNumber
-    public function setHouseNumber(string $houseNumber): void
+    public function setHouseNumberAttribute($value)
     {
-        $this->houseNumber = $houseNumber;
+        $this->attributes['houseNumber'] = $value;
     }
 
-    // Getter for $houseNumber
-    public function getHouseNumber(): string
+    public function setLocalGovernmentAreaAttribute($value)
     {
-        return $this->houseNumber;
+        $this->attributes['localGovernmentArea'] = $value;
     }
 
-    // Setter for $localGovernmentArea
-    public function setLocalGovernmentArea(string $localGovernmentArea): void
+    public function setResidentsStateAttribute($value)
     {
-        $this->localGovernmentArea = $localGovernmentArea;
+        $this->attributes['residents_state'] = $value;
     }
 
-    // Getter for $localGovernmentArea
-    public function getLocalGovernmentArea(): string
+    public function setAddressTypeAttribute($value)
     {
-        return $this->localGovernmentArea;
+        $this->attributes['address_type'] = $value;
     }
 }
