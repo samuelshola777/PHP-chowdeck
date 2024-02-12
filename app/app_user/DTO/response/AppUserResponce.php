@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Responses;
+namespace App\app_user\DTO\response;
 
-use App\Models\AppUser;
+use app\app_user\data\model\AppUser;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppUserResponse extends JsonResource
@@ -16,7 +16,7 @@ class AppUserResponse extends JsonResource
       private $verificationState;
 
     public function __construct($data){
-        
+
         $this->firstName = $data['firstName'] ?? null;
         $this->lastName = $data['lastName'] ?? null;
         $this->phoneNumber = $data['phoneNumber'] ?? null;

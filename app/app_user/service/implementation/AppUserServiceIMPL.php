@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Services;
+namespace App\app_user\service\implementation\AppUserServiceImpl;
 
-use App\Http\Requests\AppUserRequest;
-use App\Http\Responses\AppUserResponse;
-use App\Models\AppUser;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\app_user\DTO\Requests\AppUserRequest;
+use App\app_user\DTO\Response\AppUserResponse;
 use Illuminate\Validation\ValidationException;
+use app\app_user\data\repository\AppUserRepository;
+use app\app_user\service\interfaces\AppUserService;
 
 class AppUserServiceImpl implements AppUserService
 {
@@ -41,7 +43,7 @@ class AppUserServiceImpl implements AppUserService
             throw new ValidationException($validator);
         }
 
-      
+
         $data = $appUserRequest->validated();
         $data['password'] = Hash::make($data['password']);
         $appUser = AppUserRepository::saveAppUser($data);
